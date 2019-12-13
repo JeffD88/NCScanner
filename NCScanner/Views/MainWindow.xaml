@@ -1,0 +1,207 @@
+﻿<Window x:Class="NCScanner.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NCScanner"
+        mc:Ignorable="d"
+        Title="NC Scanner" 
+        Height="600" 
+        Width="400"
+        MinHeight="600"
+        MinWidth="400">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="55"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock x:Name="NCFileHeaderTextBlock"
+                   Grid.Row="2"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="2"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Height="Auto"
+                   FontSize="16"
+                   Text="NC File"/>
+        
+        <DockPanel Grid.Row="2"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="2"
+                   VerticalAlignment="Bottom"
+                   LastChildFill="True"
+                   Margin="0,0,0,5"
+                   Height="30">
+
+            <Button x:Name="BrowseButton"
+                    DockPanel.Dock="Right"
+                    Width="Auto"
+                    IsTabStop="False"
+                    Margin="5,0,0,0"
+                    Content="Browse..."
+                    Command="{Binding BrowseCommand}">
+            </Button>
+
+            <TextBox x:Name="NCFileTextBox"
+                     VerticalContentAlignment="Center"
+                     DockPanel.Dock="Left"
+                     Text="{Binding NCFilePath}"/>
+
+        </DockPanel>
+
+        <DockPanel LastChildFill="True"
+                   Grid.Row="3"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="2"
+                   VerticalAlignment="Stretch"
+                   HorizontalAlignment="Stretch"
+                   Margin="0,0,0,5">
+
+            <TextBlock x:Name="ToolListHeaderTextBlock"
+                       Grid.Row="2"
+                       Grid.Column="1"
+                       Grid.ColumnSpan="2"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Left"
+                       DockPanel.Dock="Top"
+                       Height="Auto"
+                       FontSize="16"
+                       Text="Tool List"/>
+
+            <ScrollViewer DockPanel.Dock="Bottom">
+                <TextBlock x:Name="ToolListTextBlock"
+                           Grid.Row="1"
+                           Grid.Column="1"
+                           Grid.ColumnSpan="2"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"
+                           Height="Auto"
+                           FontSize="14"
+                           Text="{Binding ToolList}"/>
+            </ScrollViewer>
+        </DockPanel>
+
+        <StackPanel Orientation="Vertical"
+                    Grid.Row="4"
+                    Grid.Column="1">
+            <TextBlock x:Name="MinHeaderTextBlock"
+                       Grid.Row="2"
+                       Grid.Column="1"
+                       Grid.ColumnSpan="2"
+                       Height="Auto"
+                       FontSize="16"
+                       Text="Min"/>
+            <DockPanel Margin="5,0,5,5">
+                <TextBlock x:Name="XMinTextBlock"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Stretch"
+                           FontSize="16" 
+                           Text="X:"/>
+                <TextBox x:Name="XMinTextBox"
+                         VerticalContentAlignment="Center"
+                         Margin="5,0,0,0"
+                         DockPanel.Dock="Right"
+                         Height="30"
+                         Text="{Binding XMin}"/>
+                
+            </DockPanel>
+            <DockPanel Margin="5,0,5,5">
+                <TextBlock x:Name="YMinTextBlock"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Stretch"
+                           FontSize="16" 
+                           Text="Y:"/>
+                <TextBox x:Name="YMinTextBox"
+                         VerticalContentAlignment="Center"
+                         Margin="5,0,0,0"
+                         DockPanel.Dock="Right"
+                         Height="30"
+                         Text="{Binding YMin}"/>
+
+            </DockPanel>
+            <DockPanel Margin="5,0,5,0">
+                <TextBlock x:Name="ZMinTextBlock"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Stretch"                          
+                           FontSize="16" 
+                           Text="Z:"/>
+            <TextBox x:Name="ZMinTextBox"
+                     VerticalContentAlignment="Center"
+                     Margin="5,0,0,0"
+                     DockPanel.Dock="Right"
+                     Height="30"
+                     Text="{Binding ZMin}"/>
+
+            </DockPanel>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical"
+                    Grid.Row="4"
+                    Grid.Column="2">
+            <TextBlock x:Name="MaxHeaderTextBlock"
+                       Grid.Row="2"
+                       Grid.Column="1"
+                       Grid.ColumnSpan="2"
+                       Height="Auto"
+                       FontSize="16"
+                       Text="Max"/>
+            <DockPanel Margin="5,0,5,5">
+                <TextBlock x:Name="XMaxTextBlock"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Stretch"
+                           FontSize="16" 
+                           Text="X:"/>
+                <TextBox x:Name="XMaxTextBox"
+                         VerticalContentAlignment="Center"
+                         Margin="5,0,0,0"
+                         DockPanel.Dock="Right"
+                         Height="30"
+                         Text="{Binding XMax}"/>
+
+            </DockPanel>
+            <DockPanel Margin="5,0,5,5">
+                <TextBlock x:Name="YMaxTextBlock"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Stretch"
+                           FontSize="16" 
+                           Text="Y:"/>
+                <TextBox x:Name="YMaxTextBox"
+                         VerticalContentAlignment="Center"
+                         Margin="5,0,0,0"
+                         DockPanel.Dock="Right"
+                         Height="30"
+                         Text="{Binding YMax}"/>
+
+            </DockPanel>
+            <DockPanel Margin="5,0,5,0">
+                <TextBlock x:Name="ZMaxTextBlock"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Stretch"                          
+                           FontSize="16" 
+                           Text="Z:"/>
+                <TextBox x:Name="ZMaxTextBox"
+                         VerticalContentAlignment="Center"
+                         Margin="5,0,0,0"
+                         DockPanel.Dock="Right"
+                         Height="30"
+                         Text="{Binding ZMax}"/>
+
+            </DockPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>
