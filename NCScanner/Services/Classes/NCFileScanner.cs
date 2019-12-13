@@ -43,7 +43,7 @@ namespace NCScanner.Services.Classes
 
                 if (toolMatch.Success)
                 {
-                    tools.Add(toolMatch.Value);
+                    tools.Add($"{toolMatch.Groups[2]} {toolMatch.Groups[5]}");
                 }
                 else if (positionMatch.Success)
                 {

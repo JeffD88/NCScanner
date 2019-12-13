@@ -106,7 +106,7 @@ namespace NCScanner.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to (M0?6)?T0?\d*.?\d+(M0?6)?.
+        ///   Looks up a localized string similar to (M0?6)?(T0?\d*.?\d+)(M0?6)?((?:.*)(\(.*\)))?.
         /// </summary>
         internal static string ToolRegex {
             get {

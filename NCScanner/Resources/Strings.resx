@@ -133,7 +133,7 @@
     <value>Save Report As...</value>
   </data>
   <data name="ToolRegex" xml:space="preserve">
-    <value>(M0?6)?T0?\d*.?\d+(M0?6)?</value>
+    <value>(M0?6)?(T0?\d*.?\d+)(M0?6)?((?:.*)(\(.*\)))?</value>
   </data>
   <data name="XPositionGroup" xml:space="preserve">
     <value>XPos</value>
