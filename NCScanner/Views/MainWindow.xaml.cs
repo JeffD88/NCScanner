@@ -27,7 +27,7 @@ namespace NCScanner
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel(new FileService());
+            DataContext = new MainWindowViewModel(new FileService(), new NCFileScanner());
         }
     }
 }

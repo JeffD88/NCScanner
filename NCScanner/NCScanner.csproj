@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Views\Icons\NCScanner.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -65,8 +68,16 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\DelegateCommand.cs" />
+    <Compile Include="DataTypes\NCData.cs" />
+    <Compile Include="Resources\Strings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
     <Compile Include="Services\Classes\FileService.cs" />
+    <Compile Include="Services\Classes\NCFileScanner.cs" />
     <Compile Include="Services\Interfaces\IFileService.cs" />
+    <Compile Include="Services\Interfaces\INCFileScanner.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -91,6 +102,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -99,11 +114,14 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Views\Icons\NCScanner.ico" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Views\Icons\Browse32.ico" />
     <Resource Include="Views\Icons\Report32.ico" />
     <Resource Include="Views\Icons\Scan32.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
