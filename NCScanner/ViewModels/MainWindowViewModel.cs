@@ -21,8 +21,6 @@
 
         private string ncFilePath = string.Empty;
 
-        private string postPath = string.Empty;
-
         #endregion
 
         #region Public Properties
@@ -37,16 +35,6 @@
             }
         }
 
-        public string PostPath
-        {
-            get => this.postPath;
-            set
-            {
-                this.postPath = value;
-                OnPropertyChanged();
-            }
-        }
-
         #endregion
 
         #region Construction
@@ -56,6 +44,8 @@
             this.fileService = fileService;
 
             this.BrowseCommand = new DelegateCommand(OnBrowseCommand);
+            this.ReportCommand = new DelegateCommand(OnReportCommand);
+            this.ScanCommand = new DelegateCommand(OnScanCommand);
         }
 
         #endregion
@@ -64,6 +54,9 @@
 
         public ICommand BrowseCommand { get; }
 
+        public ICommand ReportCommand { get; }
+
+        public ICommand ScanCommand { get; }
 
         #endregion
 
@@ -74,6 +67,25 @@
             NCFilePath = fileService.BrowseForFile("Select an NC File",
                                                    "NC Files(*.nc) | *.nc",
                                                    false);
+        }
+
+        private void OnReportCommand(object parameter)
+        {
+            fileService.SaveFileAs("Save Report As...",
+                                   "CSV File(*.csv) | *.csv",
+                                   true);
+        }
+
+        private void OnScanCommand(object parameter)
+        {
+            if (fileService.FileExists(NCFilePath))
+            {
+                
+            }
+            else
+            {
+
+            }
         }
 
         #endregion

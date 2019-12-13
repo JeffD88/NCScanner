@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,5 +22,22 @@ namespace NCScanner.Services.Classes
             };
             return openFileDialog.ShowDialog() == DialogResult.OK ? openFileDialog.FileName : string.Empty;
         }
+
+        public bool SaveFileAs(string title, string filter, bool addExtension)
+        {
+            var saveFileAs = new SaveFileDialog
+            {
+                Title = title,
+                Filter = filter,
+                AddExtension = addExtension
+            };
+            return saveFileAs.ShowDialog() == DialogResult.OK ? true : false;
+        }
+
+        public bool FileExists(string filePath)
+        {
+            return File.Exists(filePath) ? true : false;
+        }
+
     }
 }

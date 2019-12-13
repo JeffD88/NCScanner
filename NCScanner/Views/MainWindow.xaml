@@ -16,6 +16,7 @@
             <RowDefinition Height="10"/>
             <RowDefinition Height="35"/>
             <RowDefinition Height="55"/>
+            <RowDefinition Height="35"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="35"/>
@@ -49,11 +50,11 @@
 
             <Button x:Name="BrowseButton"
                     DockPanel.Dock="Right"
-                    Width="Auto"
+                    Width="65"
                     IsTabStop="False"
                     Margin="5,0,0,0"
-                    Content="Browse..."
                     Command="{Binding BrowseCommand}">
+                <Image Source="Icons/Browse32.ico"/>
             </Button>
 
             <TextBox x:Name="NCFileTextBox"
@@ -63,8 +64,32 @@
 
         </DockPanel>
 
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Height="30"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Right">
+            
+            <Button x:Name="ReportButton"
+                    Margin="0,0,5,0"
+                    Width="65"                  
+                    Command="{Binding ReportCommand}">
+                <Image Source="Icons/Report32.ico"/>
+            </Button>
+            
+            <Button x:Name="ScanButton"
+                    Width="65"
+                    IsDefault="True"
+                    Command="{Binding ScanCommand}">
+                <Image Source="Icons/Scan32.ico"/>
+            </Button>
+
+        </StackPanel>
+        
         <DockPanel LastChildFill="True"
-                   Grid.Row="3"
+                   Grid.Row="4"
                    Grid.Column="1"
                    Grid.ColumnSpan="2"
                    VerticalAlignment="Stretch"
@@ -96,12 +121,9 @@
         </DockPanel>
 
         <StackPanel Orientation="Vertical"
-                    Grid.Row="4"
+                    Grid.Row="5"
                     Grid.Column="1">
             <TextBlock x:Name="MinHeaderTextBlock"
-                       Grid.Row="2"
-                       Grid.Column="1"
-                       Grid.ColumnSpan="2"
                        Height="Auto"
                        FontSize="16"
                        Text="Min"/>
@@ -150,12 +172,9 @@
         </StackPanel>
 
         <StackPanel Orientation="Vertical"
-                    Grid.Row="4"
+                    Grid.Row="5"
                     Grid.Column="2">
             <TextBlock x:Name="MaxHeaderTextBlock"
-                       Grid.Row="2"
-                       Grid.Column="1"
-                       Grid.ColumnSpan="2"
                        Height="Auto"
                        FontSize="16"
                        Text="Max"/>
