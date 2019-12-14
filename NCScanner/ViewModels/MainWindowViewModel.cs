@@ -26,6 +26,8 @@
 
         private string toolList = string.Empty;
 
+        private string workOffsetList = string.Empty;
+
         private double xMin;
 
         private double yMin;
@@ -58,6 +60,16 @@
             set
             {
                 this.toolList = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string WorkOffsetList
+        {
+            get => this.workOffsetList;
+            set
+            {
+                this.workOffsetList = value;
                 OnPropertyChanged();
             }
         }
@@ -171,6 +183,7 @@
                 var ncData = ncFileScanner.ScanNCFile(NCFilePath);
 
                 ToolList = ncData.ToolList;
+                WorkOffsetList = ncData.WorkOffsetList;
                 XMin = ncData.XMin;
                 YMin = ncData.YMin;
                 ZMin = ncData.ZMin;

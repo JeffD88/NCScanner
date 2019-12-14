@@ -16,6 +16,8 @@ namespace NCScanner.Services.Classes
     {
         private List<string> tools;
 
+        private List<string> workOffsets;
+
         private List<double> xPositions;
 
         private List<double> yPositions;
@@ -25,6 +27,7 @@ namespace NCScanner.Services.Classes
         public NCFileScanner()
         {
             tools = new List<string>();
+            workOffsets = new List<string>();
 
             xPositions = new List<double>();
             yPositions = new List<double>();
@@ -34,18 +37,24 @@ namespace NCScanner.Services.Classes
         public NCData ScanNCFile(string filePath)
         {
             var toolRegex = new Regex(Strings.ToolRegex, RegexOptions.IgnoreCase);
+            var workOffsetRegex = new Regex(Strings.WorkOffsetRegex, RegexOptions.IgnoreCase);
             var positionRegex = new Regex(Strings.PositionRegex, RegexOptions.IgnoreCase);
 
             foreach (string line in File.ReadLines(filePath))
             {
                 var toolMatch = toolRegex.Match(line);
+                var workOffsetMatch = workOffsetRegex.Match(line);
                 var positionMatch = positionRegex.Match(line);
 
                 if (toolMatch.Success)
                 {
                     tools.Add($"{toolMatch.Groups[2]} {toolMatch.Groups[5]}");
                 }
-                else if (positionMatch.Success)
+                if (workOffsetMatch.Success)
+                {
+                    workOffsets.Add(workOffsetMatch.Value);
+                }
+                if (positionMatch.Success)
                 {
                     AddPositionsToList(positionMatch.Groups);
                 }
@@ -81,11 +90,23 @@ namespace NCScanner.Services.Classes
             return toolList;
         }
 
+        private string GenerateWorkOffsetList()
+        {
+            var workOffsetList = string.Empty;
+            foreach (var workOffset in workOffsets.Distinct())
+            {
+                workOffsetList += $"{workOffset}{Environment.NewLine}";
+            }
+
+            return workOffsetList;
+        }
+
         private NCData SetNCData()
         {
             return new NCData()
             {
                 ToolList = GenerateToolList(),
+                WorkOffsetList = GenerateWorkOffsetList(),
                 XMin = xPositions.Min(),
                 YMin = yPositions.Min(),
                 ZMin = zPositions.Min(),

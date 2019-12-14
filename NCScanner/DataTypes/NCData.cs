@@ -10,6 +10,8 @@ namespace NCScanner.DataTypes
     {
         public string ToolList { get; set; }
 
+        public string WorkOffsetList { get; set; }
+
         public double XMin { get; set; }
 
         public double YMin { get; set; }
