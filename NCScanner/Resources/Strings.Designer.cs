@@ -115,7 +115,7 @@ namespace NCScanner.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to (G54\.1\s*P\d*|G5[4-9]).
+        ///   Looks up a localized string similar to (G54\.1\s*P\d|G5[4-9](?!\.)).
         /// </summary>
         internal static string WorkOffsetRegex {
             get {
