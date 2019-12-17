@@ -13,6 +13,7 @@
     using NCScanner.Services.Interfaces;
     using NCScanner.Commands;
     using NCScanner.Resources;
+    using NCScanner.DataTypes;
 
     public class MainWindowViewModel : INotifyPropertyChanged
     {
@@ -177,10 +178,12 @@
             if (fileService.FileExists(NCFilePath))
             {
                 var ncData = ncFileScanner.ScanNCFile(NCFilePath);
+                SetNCData(ncData);
+
                 var reportPath = fileService.SaveFileAs(Strings.SaveReportTitle,
                                                         Strings.SaveReportFilter,
                                                         true,
-                                                        Path.GetFileNameWithoutExtension(ncFilePath));
+                                                        fileService.GetFileName(NCFilePath));
                 if (reportPath.Result)
                 {
                     excelService.CreateReport(ncData, reportPath.Path);
@@ -192,21 +195,24 @@
         {
             if (fileService.FileExists(NCFilePath))
             {
-                var ncData = ncFileScanner.ScanNCFile(NCFilePath);
-
-                ToolList = ncData.ToolString;
-                WorkOffsetList = ncData.WorkOffsetString;
-                XMin = ncData.XMin;
-                YMin = ncData.YMin;
-                ZMin = ncData.ZMin;
-                XMax = ncData.XMax;
-                YMax = ncData.YMax;
-                ZMax = ncData.ZMax;
+                SetNCData(ncFileScanner.ScanNCFile(NCFilePath));
             }
             else
             {
 
             }
+        }
+
+        private void SetNCData(NCData ncData)
+        {
+            ToolList = ncData.ToolString;
+            WorkOffsetList = ncData.WorkOffsetString;
+            XMin = ncData.XMin;
+            YMin = ncData.YMin;
+            ZMin = ncData.ZMin;
+            XMax = ncData.XMax;
+            YMax = ncData.YMax;
+            ZMax = ncData.ZMax;
         }
 
         #endregion

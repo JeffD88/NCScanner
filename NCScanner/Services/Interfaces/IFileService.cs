@@ -14,5 +14,7 @@ namespace NCScanner.Services.Interfaces
                                               string fileName = "");
 
         bool FileExists(string filePath);
+
+        string GetFileName(string filePath);
     }
 }

@@ -42,5 +42,10 @@ namespace NCScanner.Services.Classes
             return File.Exists(filePath) ? true : false;
         }
 
+        public string GetFileName(string filePath)
+        {
+            return Path.GetFileNameWithoutExtension(filePath);
+        }
+
     }
 }
