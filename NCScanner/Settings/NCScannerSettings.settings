@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="NCScanner.Settings" GeneratedClassName="NCScannerSettings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ToolRegex" Type="System.String" Scope="User">
+      <Value Profile="(Default)">(M0?6)?(T0?\d*.?\d+)(M0?6)?((?:.*)(\(.*\)))?</Value>
+    </Setting>
+    <Setting Name="WorkOffsetRegex" Type="System.String" Scope="User">
+      <Value Profile="(Default)">(G54\.1\s*P\d|G5[4-9](?!\.))</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

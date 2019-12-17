@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
+using NCScanner.Settings;
 using NCScanner.DataTypes;
 using NCScanner.Resources;
 using NCScanner.Services.Interfaces;
@@ -33,8 +34,8 @@ namespace NCScanner.Services.Classes
         {
             Initialize();
 
-            var toolRegex = new Regex(Strings.ToolRegex, RegexOptions.IgnoreCase);
-            var workOffsetRegex = new Regex(Strings.WorkOffsetRegex, RegexOptions.IgnoreCase);
+            var toolRegex = new Regex(NCScannerSettings.Default.ToolRegex, RegexOptions.IgnoreCase);
+            var workOffsetRegex = new Regex(NCScannerSettings.Default.WorkOffsetRegex, RegexOptions.IgnoreCase);
             var positionRegex = new Regex(Strings.PositionRegex, RegexOptions.IgnoreCase);
 
             foreach (string line in File.ReadLines(filePath))

@@ -14,6 +14,7 @@
     using NCScanner.Commands;
     using NCScanner.Resources;
     using NCScanner.DataTypes;
+    using NCScanner.Views;
 
     public class MainWindowViewModel : INotifyPropertyChanged
     {
@@ -147,6 +148,7 @@
             this.ncFileScanner = ncFileScanner;
             this.excelService = excelService;
 
+            SettingsCommand = new DelegateCommand(OnSettingsCommand);
             BrowseCommand = new DelegateCommand(OnBrowseCommand);
             ReportCommand = new DelegateCommand(OnReportCommand);
             ScanCommand = new DelegateCommand(OnScanCommand);
@@ -155,6 +157,8 @@
         #endregion
 
         #region Commands
+
+        public ICommand SettingsCommand { get; }
 
         public ICommand BrowseCommand { get; }
 
@@ -165,6 +169,17 @@
         #endregion
 
         #region Private Methods  
+
+        private void OnSettingsCommand(object parameter)
+        {
+            var view = new SettingsWindow()
+            {
+                DataContext = new SettingsWindowViewModel(),
+                WindowStartupLocation = WindowStartupLocation.CenterOwner,
+                Owner = (Window)parameter
+            };
+            view.ShowDialog();
+        }
 
         private void OnBrowseCommand(object parameter)
         {

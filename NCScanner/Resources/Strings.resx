@@ -132,12 +132,6 @@
   <data name="SaveReportTitle" xml:space="preserve">
     <value>Save Report As...</value>
   </data>
-  <data name="ToolRegex" xml:space="preserve">
-    <value>(M0?6)?(T0?\d*.?\d+)(M0?6)?((?:.*)(\(.*\)))?</value>
-  </data>
-  <data name="WorkOffsetRegex" xml:space="preserve">
-    <value>(G54\.1\s*P\d|G5[4-9](?!\.))</value>
-  </data>
   <data name="XPositionGroup" xml:space="preserve">
     <value>XPos</value>
   </data>

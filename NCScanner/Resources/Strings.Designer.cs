@@ -106,24 +106,6 @@ namespace NCScanner.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to (M0?6)?(T0?\d*.?\d+)(M0?6)?((?:.*)(\(.*\)))?.
-        /// </summary>
-        internal static string ToolRegex {
-            get {
-                return ResourceManager.GetString("ToolRegex", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to (G54\.1\s*P\d|G5[4-9](?!\.)).
-        /// </summary>
-        internal static string WorkOffsetRegex {
-            get {
-                return ResourceManager.GetString("WorkOffsetRegex", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to XPos.
         /// </summary>
         internal static string XPositionGroup {
