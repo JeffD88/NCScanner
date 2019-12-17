@@ -149,6 +149,7 @@
 
             BrowseCommand = new DelegateCommand(OnBrowseCommand);
             ReportCommand = new DelegateCommand(OnReportCommand);
+            ScanCommand = new DelegateCommand(OnScanCommand);
         }
 
         #endregion
@@ -159,6 +160,8 @@
 
         public ICommand ReportCommand { get; }
 
+        public ICommand ScanCommand { get; }
+
         #endregion
 
         #region Private Methods  
@@ -168,15 +171,6 @@
             NCFilePath = fileService.BrowseForFile(Strings.BrowseForNCTitle,
                                                    Strings.BrowseForNCFilter,
                                                    false);
-
-            if (fileService.FileExists(NCFilePath))
-            {
-                SetNCData(ncFileScanner.ScanNCFile(NCFilePath));
-            }
-            else
-            {
-
-            }
         }
 
         private void OnReportCommand(object parameter)
@@ -184,6 +178,7 @@
             if (fileService.FileExists(NCFilePath))
             {
                 var ncData = ncFileScanner.ScanNCFile(NCFilePath);
+                SetNCData(ncData);
 
                 var reportPath = fileService.SaveFileAs(Strings.SaveReportTitle,
                                                         Strings.SaveReportFilter,
@@ -192,8 +187,19 @@
                 if (reportPath.Result)
                 {
                     excelService.CreateReport(ncData, reportPath.Path);
-                    ResetNCData();
                 }          
+            }
+        }
+
+        private void OnScanCommand(object parameter)
+        {
+            if (fileService.FileExists(NCFilePath))
+            {
+                SetNCData(ncFileScanner.ScanNCFile(NCFilePath));
+            }
+            else
+            {
+
             }
         }
 
@@ -207,18 +213,6 @@
             XMax = ncData.XMax;
             YMax = ncData.YMax;
             ZMax = ncData.ZMax;
-        }
-
-        private void ResetNCData()
-        {
-            ToolList = string.Empty;
-            WorkOffsetList = string.Empty;
-            XMin = 0;
-            YMin = 0;
-            ZMin = 0;
-            XMax = 0;
-            YMax = 0;
-            ZMax = 0;
         }
 
         #endregion

@@ -26,13 +26,16 @@ namespace NCScanner.Services.Classes
 
         public NCFileScannerService()
         {
-            Initialize();
+            tools = new List<string>();
+            workOffsets = new List<string>();
+
+            xPositions = new List<double>();
+            yPositions = new List<double>();
+            zPositions = new List<double>();
         }
 
         public NCData ScanNCFile(string filePath)
         {
-            Initialize();
-
             var toolRegex = new Regex(Strings.ToolRegex, RegexOptions.IgnoreCase);
             var workOffsetRegex = new Regex(Strings.WorkOffsetRegex, RegexOptions.IgnoreCase);
             var positionRegex = new Regex(Strings.PositionRegex, RegexOptions.IgnoreCase);
@@ -113,16 +116,6 @@ namespace NCScanner.Services.Classes
                 YMax = yPositions.Max(),
                 ZMax = zPositions.Max()
             };
-        }
-
-        private void Initialize()
-        {
-            tools = new List<string>();
-            workOffsets = new List<string>();
-
-            xPositions = new List<double>();
-            yPositions = new List<double>();
-            zPositions = new List<double>();
         }
     }
 }
