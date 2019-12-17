@@ -194,8 +194,8 @@
             {
                 var ncData = ncFileScanner.ScanNCFile(NCFilePath);
 
-                ToolList = ncData.ToolList;
-                WorkOffsetList = ncData.WorkOffsetList;
+                ToolList = ncData.ToolString;
+                WorkOffsetList = ncData.WorkOffsetString;
                 XMin = ncData.XMin;
                 YMin = ncData.YMin;
                 ZMin = ncData.ZMin;

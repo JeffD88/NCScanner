@@ -79,26 +79,26 @@ namespace NCScanner.Services.Classes
             }
         }
 
-        private string GenerateToolList()
+        private string GenerateToolString()
         {
-            var toolList = string.Empty;
+            var toolString = string.Empty;
             foreach (var tool in tools.Distinct())
             {
-                toolList += $"{tool}{Environment.NewLine}";
+                toolString += $"{tool}{Environment.NewLine}";
             }
 
-            return toolList;
+            return toolString;
         }
 
-        private string GenerateWorkOffsetList()
+        private string GenerateWorkOffsetString()
         {
-            var workOffsetList = string.Empty;
+            var workOffsetString = string.Empty;
             foreach (var workOffset in workOffsets.Distinct())
             {
-                workOffsetList += $"{workOffset}{Environment.NewLine}";
+                workOffsetString += $"{workOffset}{Environment.NewLine}";
             }
 
-            return workOffsetList;
+            return workOffsetString;
         }
 
         private NCData SetNCData()
@@ -106,9 +106,9 @@ namespace NCScanner.Services.Classes
             return new NCData()
             {
                 Tools = tools.Distinct().ToList(),
-                ToolList = GenerateToolList(),
+                ToolString = GenerateToolString(),
                 WorkOffsets = workOffsets.Distinct().ToList(),
-                WorkOffsetList = GenerateWorkOffsetList(),
+                WorkOffsetString = GenerateWorkOffsetString(),
                 XMin = xPositions.Min(),
                 YMin = yPositions.Min(),
                 ZMin = zPositions.Min(),
