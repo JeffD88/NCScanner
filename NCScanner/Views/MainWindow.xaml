@@ -17,7 +17,7 @@
             <RowDefinition Height="10"/>
             <RowDefinition Height="29"/>
             <RowDefinition Height="55"/>
-            <RowDefinition Height="35"/>
+            <RowDefinition Height="31"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="125"/>
