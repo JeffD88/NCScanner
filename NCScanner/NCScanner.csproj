@@ -142,8 +142,12 @@
   <ItemGroup>
     <Resource Include="Views\Icons\Browse32.ico" />
     <Resource Include="Views\Icons\Report32.ico" />
-    <Resource Include="Views\Icons\Scan32.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Views\Icons\GreenCheckmark32.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Icons\SettingsGear24.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

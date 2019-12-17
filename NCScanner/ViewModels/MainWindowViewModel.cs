@@ -187,6 +187,7 @@
                 if (reportPath.Result)
                 {
                     excelService.CreateReport(ncData, reportPath.Path);
+                    ResetNCData();
                 }          
             }
         }
@@ -196,10 +197,6 @@
             if (fileService.FileExists(NCFilePath))
             {
                 SetNCData(ncFileScanner.ScanNCFile(NCFilePath));
-            }
-            else
-            {
-
             }
         }
 
@@ -213,6 +210,18 @@
             XMax = ncData.XMax;
             YMax = ncData.YMax;
             ZMax = ncData.ZMax;
+        }
+
+        private void ResetNCData()
+        {
+            ToolList = string.Empty;
+            WorkOffsetList = string.Empty;
+            XMin = 0;
+            YMin = 0;
+            ZMin = 0;
+            XMax = 0;
+            YMax = 0;
+            ZMax = 0;
         }
 
         #endregion

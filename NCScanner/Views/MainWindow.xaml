@@ -14,7 +14,7 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="10"/>
-            <RowDefinition Height="35"/>
+            <RowDefinition Height="29"/>
             <RowDefinition Height="55"/>
             <RowDefinition Height="35"/>
             <RowDefinition Height="2*"/>
@@ -29,6 +29,22 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    HorizontalAlignment="Right">
+
+            <Button x:Name="SettingsButton"
+                    Width="Auto"
+                    IsTabStop="False"
+                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                    Command="{Binding SettingsCommand}">
+                <Image Source="Icons/SettingsGear24.ico"
+                       Height="24"/>
+            </Button>
+        </StackPanel>
 
         <TextBlock x:Name="NCFileHeaderTextBlock"
                    Grid.Row="2"
@@ -83,7 +99,7 @@
                     Width="45"
                     IsDefault="True"
                     Command="{Binding ScanCommand}">
-                <Image Source="Icons/Scan32.ico"/>
+                <Image Source="Icons/GreenCheckmark32.ico"/>
             </Button>
 
         </StackPanel>
