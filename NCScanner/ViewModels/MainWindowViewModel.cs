@@ -20,7 +20,9 @@
 
         private readonly IFileService fileService = null;
 
-        private readonly INCFileScanner ncFileScanner = null;
+        private readonly INCFileScannerService ncFileScanner = null;
+
+        private readonly IExcelService excelService = null;
 
         private string ncFilePath = string.Empty;
 
@@ -138,10 +140,11 @@
 
         #region Construction
 
-        public MainWindowViewModel(IFileService fileService, INCFileScanner ncFileScanner)
+        public MainWindowViewModel(IFileService fileService, INCFileScannerService ncFileScanner, IExcelService excelService)
         {
             this.fileService = fileService;
             this.ncFileScanner = ncFileScanner;
+            this.excelService = excelService;
 
             BrowseCommand = new DelegateCommand(OnBrowseCommand);
             ReportCommand = new DelegateCommand(OnReportCommand);
@@ -171,9 +174,18 @@
 
         private void OnReportCommand(object parameter)
         {
-            fileService.SaveFileAs(Strings.SaveReportTitle,
-                                   Strings.SaveReportFilter,
-                                   true);
+            if (fileService.FileExists(NCFilePath))
+            {
+                var ncData = ncFileScanner.ScanNCFile(NCFilePath);
+                var reportPath = fileService.SaveFileAs(Strings.SaveReportTitle,
+                                                        Strings.SaveReportFilter,
+                                                        true,
+                                                        Path.GetFileNameWithoutExtension(ncFilePath));
+                if (reportPath.Result)
+                {
+                    excelService.CreateReport(ncData, reportPath.Path);
+                }          
+            }
         }
 
         private void OnScanCommand(object parameter)

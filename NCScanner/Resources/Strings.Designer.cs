@@ -88,7 +88,7 @@ namespace NCScanner.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CSV File(*.csv) | *.csv.
+        ///   Looks up a localized string similar to xlsx File(*.xlsx) | *.xlsx.
         /// </summary>
         internal static string SaveReportFilter {
             get {

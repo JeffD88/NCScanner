@@ -74,8 +74,7 @@
             
             <Button x:Name="ReportButton"
                     Margin="0,0,5,0"
-                    Width="45"
-                    IsEnabled="False"
+                    Width="45"                    
                     Command="{Binding ReportCommand}">
                 <Image Source="Icons/Report32.ico"/>
             </Button>

@@ -12,7 +12,7 @@ using NCScanner.Services.Interfaces;
 
 namespace NCScanner.Services.Classes
 {
-    class NCFileScanner : INCFileScanner
+    class NCFileScannerService : INCFileScannerService
     {
         private List<string> tools;
 
@@ -24,7 +24,7 @@ namespace NCScanner.Services.Classes
 
         private List<double> zPositions;
 
-        public NCFileScanner()
+        public NCFileScannerService()
         {
             tools = new List<string>();
             workOffsets = new List<string>();
@@ -105,7 +105,9 @@ namespace NCScanner.Services.Classes
         {
             return new NCData()
             {
+                Tools = tools.Distinct().ToList(),
                 ToolList = GenerateToolList(),
+                WorkOffsets = workOffsets.Distinct().ToList(),
                 WorkOffsetList = GenerateWorkOffsetList(),
                 XMin = xPositions.Min(),
                 YMin = yPositions.Min(),

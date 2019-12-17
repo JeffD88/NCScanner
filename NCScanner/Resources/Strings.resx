@@ -127,7 +127,7 @@
     <value>(?:X)(?&lt;XPos&gt;(\+|-)?(\d+\.?\d*|\.\d+))|(?:Y)(?&lt;YPos&gt;(\+|-)?(\d+\.?\d*|\.\d+))|(?:Z)(?&lt;ZPos&gt;(\+|-)?(\d+\.?\d*|\.\d+))</value>
   </data>
   <data name="SaveReportFilter" xml:space="preserve">
-    <value>CSV File(*.csv) | *.csv</value>
+    <value>xlsx File(*.xlsx) | *.xlsx</value>
   </data>
   <data name="SaveReportTitle" xml:space="preserve">
     <value>Save Report As...</value>

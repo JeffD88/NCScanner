@@ -23,15 +23,18 @@ namespace NCScanner.Services.Classes
             return openFileDialog.ShowDialog() == DialogResult.OK ? openFileDialog.FileName : string.Empty;
         }
 
-        public bool SaveFileAs(string title, string filter, bool addExtension)
+        public (bool Result, string Path) SaveFileAs(string title, string filter, bool addExtension,
+                                                     string fileName = "")
         {
             var saveFileAs = new SaveFileDialog
             {
                 Title = title,
                 Filter = filter,
+                FileName = fileName,
                 AddExtension = addExtension
             };
-            return saveFileAs.ShowDialog() == DialogResult.OK ? true : false;
+            return saveFileAs.ShowDialog() == DialogResult.OK ? (true, saveFileAs.FileName) : 
+                                                                (false, string.Empty);
         }
 
         public bool FileExists(string filePath)

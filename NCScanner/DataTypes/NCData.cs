@@ -8,7 +8,11 @@ namespace NCScanner.DataTypes
 {
     public class NCData
     {
+        public List<string> Tools { get; set; }
+
         public string ToolList { get; set; }
+
+        public List<string> WorkOffsets { get; set; }
 
         public string WorkOffsetList { get; set; }
 
@@ -24,5 +28,10 @@ namespace NCScanner.DataTypes
 
         public double ZMax { get; set; }
 
+        public NCData()
+        {
+            Tools = new List<string>();
+            WorkOffsets = new List<string>();
+        }
     }
 }

@@ -10,7 +10,8 @@ namespace NCScanner.Services.Interfaces
     {
         string BrowseForFile(string title, string filter, bool multiselect);
 
-        bool SaveFileAs(string title, string filter, bool addExtension);
+        (bool Result, string Path) SaveFileAs(string title, string filter, bool addExtension,
+                                              string fileName = "");
 
         bool FileExists(string filePath);
     }

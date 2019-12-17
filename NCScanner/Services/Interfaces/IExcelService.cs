@@ -8,8 +8,8 @@ using NCScanner.DataTypes;
 
 namespace NCScanner.Services.Interfaces
 {
-    public interface INCFileScanner
+    public interface IExcelService
     {
-        NCData ScanNCFile(string filePath);
+        bool CreateReport(NCData ncData, string filePath);
     }
 }
